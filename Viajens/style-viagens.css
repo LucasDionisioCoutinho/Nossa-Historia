@@ -1,0 +1,128 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: rgba(233, 239, 236, 1);
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+}
+h1 {
+  text-align: center;
+  align-items: center;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  background-color: #C4DAD2;
+  height: 50px;
+  padding: 8px 0 0 0;
+  color: #000000d2;
+}
+h2 {
+  background-color: #C4DAD2;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  color: #000000d2;
+}
+
+div.galeria {
+  width: 100%;
+  padding: 2%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 30vh;
+}
+
+div.galeria div.single-galeria {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  margin: 0.5vw;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.h-2 {
+  grid-row: span 2;
+}
+
+.w-2 {
+  grid-column: span 2;
+}*/
+div.galeria div.single-galeria img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+
+  transition: transform 0.25s ease-in-out;
+}
+
+@media screen and (max-width: 764px){
+  div.galeria {
+      
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 15vh;
+  }
+  
+}
+
+div.galeria div.single-galeria .flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.9s;
+}
+
+div.galeria div.single-galeria:hover .flip-card-inner {
+  transform: rotateY(180deg); /* Gira o card ao passar o mouse */
+}
+
+/* Frente do card */
+div.galeria div.single-galeria .flip-card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Esconde o verso quando girado */
+}
+
+/* Verso do card */
+div.galeria div.single-galeria .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg); /* Posiciona o verso ao contrário */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6A9C89;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Estilo da imagem */
+div.galeria div.single-galeria img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* Estilo para o texto */
+div.galeria div.single-galeria p {
+  font-size: 18px;
+  color: white;
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+div.galeria div.single-galeria.clicked .flip-card-inner {
+  transform: rotateY(180deg);
+}
