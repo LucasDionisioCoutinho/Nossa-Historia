@@ -3,6 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --color-background: rgba(233, 239, 236, 1);
+  --font-: 'DM Sans', sans-serif;
+  --color-textosbtn: rgba(22, 66, 60, 1);
+}
 
 body {
   height: 100vh;
@@ -37,7 +42,7 @@ h1 {
   font-size: 36px;
   margin-bottom: 10px;
   font-weight: 600;
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-);
 }
 
 p {
@@ -56,7 +61,7 @@ a {
   font-size: 25px;
   width: 8em;
   height: 2em;
-  color: rgba(22, 66, 60, 1);
+  color: var(--color-textosbtn);
   border-left: 0.08em solid;
   position: relative;
   margin-top: 0.8em;
@@ -93,7 +98,7 @@ a span {
   top: -10%;
   box-sizing: border-box;
   border: 0.08em solid;
-  background-color: rgba(233, 239, 236, 1);
+  background-color: var(--color-background);
   display: flex;
   align-items: center;
   justify-content: center;
