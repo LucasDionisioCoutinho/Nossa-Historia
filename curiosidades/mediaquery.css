@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 720px) {
+
+    main {
+        width: 482px;
+    }
+      .primeiro-titulo h1 {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-family: var(--font-);
+        color: var(--color-texto);
+        font-size: 1.5rem;
+      }
+      .titulo-pagina h1 {
+        font-size: 2rem;
+      }
+      .img-historia img {
+        width: 239px;
+        height: 300px;
+      }
+
+      .nossa-historia {
+        height: 460px;
+        margin-left: 8px;
+      }
+
+      .nossa-historia h1 {
+        font-size: 1.3rem;
+        padding: 10px;
+      }
+
+      .nossa-historia p {
+        font-size: 0.8rem;
+      }
+      .nossa-historia2 h1 {
+        font-size: 1.3rem;
+      }
+
+      .nossa-historia2 p {
+        font-size: 1.2rem;
+      }
+
+      footer {
+        font-size: 1.4rem;
+        width: 482px;
+      }
+
+    
+}
