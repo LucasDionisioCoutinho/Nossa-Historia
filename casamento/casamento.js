@@ -1,62 +1,29 @@
-const carousel = document.querySelector('.carousel');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-let currentIndex = 0;
+const divCarousel = document.querySelector('.carousel');
+const prevBtn = document.querySelector('.carousel-btn-prev');
+const nextBtn = document.querySelector('.carousel-btn-next');
+const videoPlayer = document.getElementById('videoPlayer');
+const videoSource = document.getElementById('videoSource');
 
-// Sample media items (to be replaced with actual images/videos)
-const mediaItems = [
-    { type: 'image', src: 'imagens/img1.jpg' },
-    { type: 'video', src: 'videos/video1.mp4' },
-    { type: 'image', src: 'imagens/img2.jpg' },
-    { type: 'video', src: 'videos/video2.mp4' }
+// Lista de vídeos com os caminhos corretos para a pasta imagens-videos
+const videos = [
+    './imagens-videos/entrada-sogra.mp4',
+    './imagens-videos/video-entrada-casamento-noivo.mp4'
 ];
 
-// Initialize carousel with media items
-function initializeCarousel() {
-    mediaItems.forEach(item => {
-        const mediaElement = document.createElement(item.type);
-        mediaElement.src = item.src;
-        mediaElement.controls = item.type === 'video';
-        const carouselItem = document.createElement('div');
-        carouselItem.classList.add('carousel-item');
-        carouselItem.appendChild(mediaElement);
-        carousel.appendChild(carouselItem);
-    });
+let currentVideoIndex = 0;
+
+function changeVideo(index) {
+    videoSource.src = videos[index];
+    videoPlayer.load();
+    videoPlayer.play();
 }
 
-// Move to specific slide
-function moveToSlide(index) {
-    if (index < 0) index = mediaItems.length - 1;
-    if (index >= mediaItems.length) index = 0;
-    
-    const offset = -index * 100;
-    carousel.style.transform = `translateX(${offset}%)`;
-    currentIndex = index;
-}
+prevBtn.addEventListener('click', () => {
+    currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+    changeVideo(currentVideoIndex);
+});
 
-// Event listeners for navigation
-prevBtn.addEventListener('click', () => moveToSlide(currentIndex - 1));
-nextBtn.addEventListener('click', () => moveToSlide(currentIndex + 1));
-
-// Initialize the carousel on page load
-window.addEventListener('load', initializeCarousel);
-
-// Auto-play functionality (optional)
-let autoPlayInterval;
-function startAutoPlay() {
-    autoPlayInterval = setInterval(() => {
-        moveToSlide(currentIndex + 1);
-    }, 5000);
-}
-
-function stopAutoPlay() {
-    clearInterval(autoPlayInterval);
-}
-
-// Start auto-play when mouse leaves carousel
-carousel.parentElement.addEventListener('mouseleave', startAutoPlay);
-// Stop auto-play when mouse enters carousel
-carousel.parentElement.addEventListener('mouseenter', stopAutoPlay);
-
-// Start auto-play initially
-startAutoPlay();
+nextBtn.addEventListener('click', () => {
+    currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+    changeVideo(currentVideoIndex);
+});
